@@ -18,10 +18,8 @@ Parameters:
     Description: Optional idempotency token string that ensures a call to StartModel completes only once
     Default: RunOnce
 
-Mappings:
-  Solution:
-    Constants:
-      Version: "v0.1"
+Metadata:
+  Version: "v0.1"
 
 Resources:
   SourceS3Bucket:

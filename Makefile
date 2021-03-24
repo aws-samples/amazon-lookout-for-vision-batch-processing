@@ -7,5 +7,9 @@ package:
 		template.yaml \
 		-x '**/__pycache*' @
 
+test:
+	cfn-lint template.yaml
+	cfn_nag template.yaml
+
 version:
-	@echo $(shell cfn-flip template.yaml | python -c 'import sys, json; print(json.load(sys.stdin)["Mappings"]["Solution"]["Constants"]["Version"])')
+	@echo $(shell cfn-flip template.yaml | python -c 'import sys, json; print(json.load(sys.stdin)["Metadata"]["Version"])')

@@ -37,7 +37,5 @@ jobs:
       - name: Install ruby dependencies
         run: gem install cfn-nag
       # Run Tests
-      - name: CloudFormation lint
-        run: cfn-lint template.yaml
-      - name: CloudFormation nag
-        run: cfn_nag template.yaml
+      - name: Run tests
+        run: make test
