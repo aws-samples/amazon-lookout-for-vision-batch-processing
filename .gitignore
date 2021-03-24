@@ -1,0 +1,5 @@
+.aws-sam
+.DS_Store
+.vscode
+packaged.zip
+samconfig.toml
