@@ -25,7 +25,7 @@ jobs:
         with:
           python-version: 3.8
       - name: Install python dependencies
-        run: pip3 install -r requirements.txt
+        run: make setup
       # Release if required
       - name: Set version
         id: version
