@@ -1,3 +1,4 @@
 awscli==1.16.292
 cfn-flip==1.2.3
 cfn_lint==0.48.0
+pre-commit==2.1.1

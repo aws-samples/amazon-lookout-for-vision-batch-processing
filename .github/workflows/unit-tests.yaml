@@ -24,16 +24,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       # Setup
-      - name: Set up Python 3.7
+      - name: Set up Python 3.8
         uses: actions/setup-python@v1
         with:
-          python-version: 3.7
+          python-version: 3.8
       - name: Set up ruby 2.6
         uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.6'
       - name: Install dependencies
-        run: pip3 install -r requirements.txt
+        run: make setup
       - name: Install ruby dependencies
         run: gem install cfn-nag
       # Run Tests

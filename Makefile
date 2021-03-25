@@ -11,5 +11,8 @@ test:
 	cfn-lint template.yaml
 	cfn_nag template.yaml
 
+setup:
+	pip3 install -r requirements.txt && pre-commit install
+
 version:
 	@echo $(shell cfn-flip template.yaml | python -c 'import sys, json; print(json.load(sys.stdin)["Metadata"]["Version"])')
