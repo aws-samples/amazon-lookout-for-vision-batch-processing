@@ -76,6 +76,21 @@ Resources:
                   - Name: suffix
                     Value: .JPEG
 
+  SourceS3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref SourceS3Bucket
+      PolicyDocument:
+        Statement:
+          - Sid: HttpsOnly
+            Action: '*'
+            Effect: Deny
+            Resource: !Sub arn:aws:s3:::${SourceS3Bucket}/*
+            Principal: '*'
+            Condition:
+              Bool:
+                'aws:SecureTransport': 'false'
+
   SQSQueue:
     Type: AWS::SQS::Queue
     Properties:
@@ -84,6 +99,7 @@ Resources:
       MessageRetentionPeriod: 345600
       ReceiveMessageWaitTimeSeconds: 0
       VisibilityTimeout: 60
+      KmsMasterKeyId: alias/aws/sqs
 
   SQSQueuePolicy:
     Type: AWS::SQS::QueuePolicy
@@ -303,6 +319,21 @@ Resources:
         ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
+
+  FinalS3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref FinalS3Bucket
+      PolicyDocument:
+        Statement:
+          - Sid: HttpsOnly
+            Action: '*'
+            Effect: Deny
+            Resource: !Sub arn:aws:s3:::${FinalS3Bucket}/*
+            Principal: '*'
+            Condition:
+              Bool:
+                'aws:SecureTransport': 'false'
 
   AnalyseImageFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html
