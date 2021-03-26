@@ -12,10 +12,11 @@ This application creates a serverless Amazon Lookout for Vision Detection workfl
 
 Solution Architecture Diagram: The following architecture diagram shows how you can design a serverless workflow to process images in batches with Amazon Lookout for Vision Model.
 
-Architecture Diagram: 
 <img width="814" alt="Architecture Diagram" src="docs/SA-Amazon Lookout for Vision Batch Image Processing.png">
 
+
 Step Functions state machine:
+
 The following image show the Step Functions state machine used to orchestrate the solution. 
 
 <img width="514" alt="Architecture Diagram" src="docs/SA-State machine for Amazon Lookout for Vision Batch processing.png">
