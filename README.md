@@ -16,7 +16,9 @@ Architecture Diagram:
 <img width="814" alt="Architecture Diagram" src="docs/SA-Amazon Lookout for Vision Batch Image Processing.png">
 
 Step Functions state machine:
-<img width="814" alt="Architecture Diagram" src="docs/SA-State machine for Amazon Lookout for Vision Batch processing.png">
+The following image show the Step Functions state machine used to orchestrate the solution. 
+
+<img width="514" alt="Architecture Diagram" src="docs/SA-State machine for Amazon Lookout for Vision Batch processing.png">
 
 ### Usage
 
