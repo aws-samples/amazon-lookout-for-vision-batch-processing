@@ -1,9 +1,22 @@
 
 # Batch Image Processing with Amazon Lookout for Vision
 
-TODO: Description
+In this post, we show how you can build cost-optimal batch solution with Amazon Lookout for Vision which provision your custom model at scheduled times, process all your images, and then deprovision your resources to avoid incurring extra cost.
 
-TODO: Architecture Diagram
+This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI or using the Cloudformation links below. It includes the following files and folders:
+
+    \functions - Code for the application's Lambda functions to check the presence of messages in a Queue, start or stop a Amazon Lookout for Vision Model, Analyse Images using your Model.
+    template.yaml - A template that defines the application's AWS resources.
+
+This application creates a serverless Amazon Lookout for Vision Detection workflow which runs on a pre-defined schedule (note that the schedule is enabled by default at deployment). It demonstrates the power of Step Functions to orchestrate Lambda functions and other AWS resources to form complex and robust workflows, coupled with event-driven development using Amazon EventBridge.
+
+Solution Architecture Diagram: The following architecture diagram shows how you can design a serverless workflow to process images in batches with Amazon Lookout for Vision Model.
+
+Architecture Diagram: 
+<img width="814" alt="Architecture Diagram" src="docs/SA-Amazon Lookout for Vision Batch Image Processing.png">
+
+Step Functions state machine:
+<img width="814" alt="Architecture Diagram" src="docs/SA-State machine for Amazon Lookout for Vision Batch processing.png">
 
 ### Usage
 
