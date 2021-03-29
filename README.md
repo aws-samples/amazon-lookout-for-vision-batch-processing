@@ -1,7 +1,7 @@
 
 # Batch Image Processing with Amazon Lookout for Vision
 
-In this post, we show how you can build cost-optimal batch solution with Amazon Lookout for Vision which provision your custom model at scheduled times, process all your images, and then deprovision your resources to avoid incurring extra cost.
+In this code sample, we show how you can build cost-optimal batch solution with Amazon Lookout for Vision which provision your custom model at scheduled times, process all your images, and then deprovision your resources to avoid incurring extra cost.
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI or using the Cloudformation links below. It includes the following files and folders:
 
