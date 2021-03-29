@@ -99,7 +99,6 @@ Resources:
       MessageRetentionPeriod: 345600
       ReceiveMessageWaitTimeSeconds: 0
       VisibilityTimeout: 60
-      KmsMasterKeyId: alias/aws/sqs
 
   SQSQueuePolicy:
     Type: AWS::SQS::QueuePolicy
