@@ -1,7 +1,17 @@
 
 # Batch Image Processing with Amazon Lookout for Vision
 
-In this post, we show how you can build cost-optimal batch solution with Amazon Lookout for Vision which provision your custom model at scheduled times, process all your images, and then deprovision your resources to avoid incurring extra cost.
+Amazon Lookout for Vision is a machine learning (ML) service that spots defects and anomalies in visual representations using computer vision (CV). With Amazon Lookout for Vision, manufacturing companies can increase quality and reduce operational costs by quickly identifying differences in images of objects at scale. For example, Amazon Lookout for Vision can be used to identify missing components in products, damage to vehicles or structures, irregularities in production lines, miniscule defects in silicon wafers, and other similar problems. Amazon Lookout for Vision uses ML to see and understand images from any camera as a person would, but with an even higher degree of accuracy and at a much larger scale. Amazon Lookout for Vision allows customers to eliminate the need for costly and inconsistent manual inspection, while improving quality control, defect and damage assessment, and compliance. In minutes, you can begin using Amazon Lookout for Vision to automate inspection of images and objects–with no machine learning expertise required.
+
+How it works:
+
+Step 1: Collect images that show normal and defective products from your production line and load them in to the Amazon Lookout for Vision console.
+Step 2: Label images as normal or anomalous and Lookout for Vision will automatically build a model for you in minutes. Tune your model to improve defect detection by adding images to the dataset.
+Step 3: Use the Amazon Lookout for Vision dashboard to monitor defects and improve processes.
+Step 4: Automate visual inspection processes real-time or in-batch and receive notifications when defects are detected.
+Step 5: Make continuous improvements by providing feedback on the identified product defects.
+
+In this solution, we show how you can build cost-optimal batch solution with Amazon Lookout for Vision which provision your custom model at scheduled times, process all your images, and then deprovision your resources to avoid incurring extra cost.
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI or using the Cloudformation links below. It includes the following files and folders:
 
@@ -28,8 +38,8 @@ The following image show the Step Functions state machine used to orchestrate th
 1. To deploy the sample application, you will require an AWS account. If you don’t already have an AWS account, create one at <https://aws.amazon.com> by following the on-screen instructions. Your access to the AWS account must have IAM permissions to launch AWS CloudFormation templates that create IAM roles.
 
 2. Please refer [here](https://docs.aws.amazon.com/lookout-for-vision/) for instructions on getting started with Amazon Lookout for Vision. When deploying this application you will need to provide the following two parameters for your Lookout for Vision Project.
-   - Amazon Lookout for Vision Model Project Name: The name of the Amazon Lookout for Vision project that contains the models you want to use. 
-   - Amazon Lookout for Vision Model Project Version: The name of the model version that you want to use.
+   - Amazon Lookout for Vision Project Name: The name of the Amazon Lookout for Vision project that contains the models you want to use. This project should be in the same region where you are deploying the solution.
+   - Amazon Lookout for Vision Model Version: The number (or latest) of the model version that you want to use.
 
 
 #### Deployment
