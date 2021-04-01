@@ -5,11 +5,15 @@ Amazon Lookout for Vision is a machine learning (ML) service that spots defects 
 
 How it works:
 
-Step 1: Collect images that show normal and defective products from your production line and load them in to the Amazon Lookout for Vision console.
-Step 2: Label images as normal or anomalous and Lookout for Vision will automatically build a model for you in minutes. Tune your model to improve defect detection by adding images to the dataset.
-Step 3: Use the Amazon Lookout for Vision dashboard to monitor defects and improve processes.
-Step 4: Automate visual inspection processes real-time or in-batch and receive notifications when defects are detected.
-Step 5: Make continuous improvements by providing feedback on the identified product defects.
+>Step 1: Collect images that show normal and defective products from your production line and load them in to the Amazon Lookout for Vision console.
+
+>Step 2: Label images as normal or anomalous and Lookout for Vision will automatically build a model for you in minutes. Tune your model to improve defect detection by adding images to the dataset.
+
+>Step 3: Use the Amazon Lookout for Vision dashboard to monitor defects and improve processes.
+
+>Step 4: Automate visual inspection processes real-time or in-batch and receive notifications when defects are detected.
+
+>Step 5: Make continuous improvements by providing feedback on the identified product defects.
 
 In this solution, we show how you can build cost-optimal batch solution with Amazon Lookout for Vision which provision your custom model at scheduled times, process all your images, and then deprovision your resources to avoid incurring extra cost.
 In this code sample, we show how you can build cost-optimal batch solution with Amazon Lookout for Vision which provision your custom model at scheduled times, process all your images, and then deprovision your resources to avoid incurring extra cost.
