@@ -26,29 +26,21 @@ def lambda_handler(event, context):
 
     projectname = os.environ["lookoutforvision_project_name"]
     projectmodelversion = os.environ["lookoutforvision_project_model_version"]
-    # minimuminferenceunits = int (os.environ['minimumInferenceUnitsToUse'])
-    # clientToken = os.environ['clientToken']
 
-    # running_states = ['STARTING_HOSTING', 'HOSTED']
-    # running_status = {}
     # Check if already running
     try:
         is_running = lookoutforvision_client.describe_model(
             ProjectName=projectname, ModelVersion=projectmodelversion
         )
-        # print("is_running: ", is_running)
-        # print("is_running: ", is_running['ModelDescription']['Status'])
     except Exception as e:
         print(e)
 
     running_status = is_running["ModelDescription"]["Status"]
     if running_status == "HOSTED":
         # Do nothing
-        # print('Model Start Status: %s' % running_status)
         return "HOSTED"
     if running_status == "STARTING_HOSTING":
         # Do nothing
-        # print('Model Start Status: %s' % running_status)
         return "STARTING_HOSTING"
     else:
         # If not running - Start
