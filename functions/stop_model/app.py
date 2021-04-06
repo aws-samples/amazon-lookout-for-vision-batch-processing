@@ -27,7 +27,6 @@ def lambda_handler(event, context):
     projectname = os.environ["lookoutforvision_project_name"]
     projectmodelversion = os.environ["lookoutforvision_project_model_version"]
     client_token = os.environ["clientToken"]
-    # running_states = ['HOSTED']
 
     # Check if already running
     try:
@@ -48,7 +47,6 @@ def lambda_handler(event, context):
             )
         except Exception as e:
             print(e)
-        # print('Model Status: %s' % running_status['Status'])
     else:
         # If not running - Do Nothing
         print("Model Start Status: %s" % running_status["Status"])
