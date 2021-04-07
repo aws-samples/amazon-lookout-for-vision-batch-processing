@@ -26,16 +26,14 @@ This project contains source code and supporting files for a serverless applicat
 
 This application creates a serverless Amazon Lookout for Vision Detection workflow which runs on a pre-defined schedule (note that the schedule is enabled by default at deployment). It demonstrates the power of Step Functions to orchestrate Lambda functions and other AWS resources to form complex and robust workflows, coupled with event-driven development using Amazon EventBridge.
 
-Solution Architecture Diagram: The following architecture diagram shows how you can design a serverless workflow to process images in batches with Amazon Lookout for Vision Model.
+The following architecture diagram shows how you can design a serverless workflow to process images in batches with Amazon Lookout for Vision Model.
 
-<img width="814" alt="Architecture Diagram" src="docs/SA-Amazon Lookout for Vision Batch Image Processing.png">
+![Architecture diagram of the solution](docs/SA-Amazon Lookout for Vision Batch Image Processing.png)
 
 
-Step Functions state machine:
+The following diagram shows the Step Functions state machine used to orchestrate the solution.
 
-The following image show the Step Functions state machine used to orchestrate the solution. 
-
-<img width="514" alt="Architecture Diagram" src="docs/SA-State machine for Amazon Lookout for Vision Batch processing.png">
+![Diagram of Step Function state machine](docs/SA-State machine for Amazon Lookout for Vision Batch processing.png)
 
 ### Usage
 
