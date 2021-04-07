@@ -23,37 +23,30 @@ import boto3
 def lambda_handler(event, context):
 
     lookoutforvision_client = boto3.client("lookoutvision")
+    project_name = os.environ["lookoutforvision_project_name"]
+    project_model_version = os.environ["lookoutforvision_project_model_version"]
 
-    projectname = os.environ["lookoutforvision_project_name"]
-    projectmodelversion = os.environ["lookoutforvision_project_model_version"]
-
-    # Check if already running
     try:
-        is_running = lookoutforvision_client.describe_model(
-            ProjectName=projectname, ModelVersion=projectmodelversion
+        running_states = ["HOSTED", "STARTING_HOSTING"]
+        response = lookoutforvision_client.describe_model(
+            ProjectName=project_name, ModelVersion=project_model_version
         )
-    except Exception as e:
-        print(e)
 
-    running_status = is_running["ModelDescription"]["Status"]
-    if running_status == "HOSTED":
-        # Do nothing
-        return "HOSTED"
-    if running_status == "STARTING_HOSTING":
-        # Do nothing
-        return "STARTING_HOSTING"
-    else:
-        # If not running - Start
-        try:
-            running_status = lookoutforvision_client.start_model(
-                ProjectName=projectname,
-                ModelVersion=projectmodelversion,
+        running_status = response["ModelDescription"]["Status"]
+
+        if running_status not in running_states:
+            response = lookoutforvision_client.start_model(
+                ProjectName=project_name,
+                ModelVersion=project_model_version,
                 MinInferenceUnits=int(
                     os.environ["minimumInferenceUnitsToUse"]
                 ),  # Can be increased upto 5 for running multiple inference units
                 ClientToken=os.environ["clientToken"],
             )
-            print("running_status: ", running_status["Status"])
-        except Exception as e:
-            print(e)
-        return running_status["Status"]
+            running_status = response["Status"]
+
+        print("Current state is: ", running_status)
+        return running_status
+
+    except Exception as e:
+        print(e)

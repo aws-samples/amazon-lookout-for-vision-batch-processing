@@ -23,31 +23,27 @@ import boto3
 def lambda_handler(event, context):
 
     lookoutforvision_client = boto3.client("lookoutvision")
-
-    projectname = os.environ["lookoutforvision_project_name"]
-    projectmodelversion = os.environ["lookoutforvision_project_model_version"]
+    project_name = os.environ["lookoutforvision_project_name"]
+    project_model_version = os.environ["lookoutforvision_project_model_version"]
     client_token = os.environ["clientToken"]
 
-    # Check if already running
     try:
-        isrunning_response = lookoutforvision_client.describe_model(
-            ProjectName=projectname, ModelVersion=projectmodelversion
+        running_states = ["HOSTED", "STARTING_HOSTING"]
+        response = lookoutforvision_client.describe_model(
+            ProjectName=project_name, ModelVersion=project_model_version
         )
-    except Exception as e:
-        print(e)
+        running_status = response["ModelDescription"]["Status"]
 
-    running_status = isrunning_response["ModelDescription"]["Status"]
-    if running_status == "HOSTED":
-        # Stop Model
-        try:
-            running_status = lookoutforvision_client.stop_model(
-                ProjectName=projectname,
-                ModelVersion=projectmodelversion,
+        if running_status in running_states:
+            response = lookoutforvision_client.stop_model(
+                ProjectName=project_name,
+                ModelVersion=project_model_version,
                 ClientToken=client_token,
             )
-        except Exception as e:
-            print(e)
-    else:
-        # If not running - Do Nothing
-        print("Model Start Status: %s" % running_status["Status"])
-    return running_status["Status"]
+            running_status = response["Status"]
+
+        print("Current state is: ", running_status)
+        return running_status
+
+    except Exception as e:
+        print(e)

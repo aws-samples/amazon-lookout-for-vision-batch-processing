@@ -296,18 +296,17 @@ Resources:
       Handler: app.lambda_handler
       Environment:
         Variables:
-          analyze_lambda_arn: !GetAtt AnalyseImageFunction.Arn
+          analyze_lambda_uuid: !Ref AnalyseImageFunctionSQSEvent
       Runtime: python3.8
       MemorySize: 128
       Timeout: 3
       Policies:
         - Statement:
             - Action:
-                - "lambda:ListEventSourceMappings"
-                - "lambda:GetEventSourceMapping"
-                - "lambda:UpdateEventSourceMapping"
-              Effect: "Allow"
-              Resource: "*"
+                - lambda:GetEventSourceMapping
+                - lambda:UpdateEventSourceMapping
+              Effect: Allow
+              Resource: !Sub arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:event-source-mapping:${AnalyseImageFunctionSQSEvent}
 
   FinalS3Bucket:
     Type: "AWS::S3::Bucket"
