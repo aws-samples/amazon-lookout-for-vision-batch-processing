@@ -386,5 +386,3 @@ Outputs:
   CustomCVStateMachineHourlyPollingScheduleARN:
     Description: "ARN of the AWS EventBridge Rule"
     Value: !Ref LFVBatchStateMachineHourlyPollingSchedule
-  MatteoTest:
-    Value: !Ref AnalyseImageFunctionSQSEvent
