@@ -43,7 +43,7 @@ The following diagram shows the Step Functions state machine used to orchestrate
 
 2. Please refer [here](https://docs.aws.amazon.com/lookout-for-vision/) for instructions on getting started with Amazon Lookout for Vision. When deploying this application you will need to provide the following two parameters for your Lookout for Vision Project.
    - Amazon Lookout for Vision Project Name: The name of the Amazon Lookout for Vision project that contains the models you want to use. This project should be in the same region where you are deploying the solution.
-   - Amazon Lookout for Vision Model Version: The number (or latest) of the model version that you want to use.
+   - Amazon Lookout for Vision Model Version: The number of the model version that you want to use.
 
 
 #### Deployment
