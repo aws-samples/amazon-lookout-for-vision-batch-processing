@@ -101,8 +101,8 @@ The demo application is deployed as an [AWS CloudFormation](https://aws.amazon.c
 To test your workflow, complete the following steps:
 1. Upload sample images to the input S3 bucket that was created by the solution (Example: xxxx-sources3bucket-xxxx).
 2. Go to AWS Step Function console and select the state machine created by the solution (Example: CustomCVStateMachine-xxxx). You will see an execution triggered by the EventBridge at every hour.
-3. To test the solution, you can also manually start the workflow by clicking on the “Start execution” button.
-4. As images are processed you can go to the output S3 bucket (Example: xxxx-finals3bucket-xxxx) to see the JSON output for each image. The Final S3 bucket holds the images that have been processed along with the inferenced anomaly detection json. As the images get processed, they will be deleted from the source bucket.
+3. To test the solution, you can manually start the workflow by clicking on the “Start execution” button.
+4. Once images are processed you can go to the output S3 bucket (Example: xxxx-finals3bucket-xxxx) to see the JSON output for each image. The Final S3 bucket holds the images that have been processed along with the inferenced anomaly detection results in JSON format. Once an image is processed, it will be deleted from the source bucket.
 
 
 ### Removing the application
