@@ -107,9 +107,15 @@ To test your workflow, complete the following steps:
 
 ### Removing the application
 
-To remove the application open the AWS CloudFormation Console, click on the name of the project, right-click and select "_Delete Stack_". Your stack will take some time to be deleted. You can track its progress in the "Events" tab. When it is done, the status will change from "_DELETE_IN_PROGRESS_" to "_DELETE_COMPLETE_". It will then disappear from the list. 
+To remove the application:
 
-**Note:** Please note that the provided configuration will ensure that the Amazon S3 buckets and their contents are retained when removing the application via the AWS Cloudformation console. This is to ensure that no data is accidently lost while removing the application. The buckets can be deleted from the S3 console.
+1. Open the AWS CloudFormation Console.
+
+1. Select the name of the stack.
+
+1. Select "_Delete Stack_". Your stack will take some time to be deleted. You can track its progress in the "Events" tab. When it is done, the status will change from "_DELETE_IN_PROGRESS_" to "_DELETE_COMPLETE_". It will then disappear from the list.
+
+**Note:** Please note that the provided configuration will ensure that the Amazon S3 buckets and their contents are retained when removing the application via the AWS Cloudformation console. This is to ensure that no data is accidently lost while removing the application. The buckets can be deleted using the S3 console.
 
 
 ## License
