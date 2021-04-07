@@ -21,8 +21,8 @@ In this code sample, we show how you can build cost-optimal batch solution with 
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI or using the Cloudformation links below. It includes the following files and folders:
 
-> - /functions - Code for the application's Lambda functions to check the presence of messages in a Queue, start or stop a Amazon Lookout for Vision Model, Analyse Images using your Model.
-> - template.yaml - A template that defines the application's AWS resources.
+- `functions` - Code for the application's Lambda functions to check the presence of messages in a Queue, start or stop a Amazon Lookout for Vision Model, Analyse Images using your Model.
+- `template.yaml` - An AWS CloudFormation template that defines the application's AWS resources.
 
 This application creates a serverless Amazon Lookout for Vision Detection workflow which runs on a pre-defined schedule (note that the schedule is enabled by default at deployment). It demonstrates the power of Step Functions to orchestrate Lambda functions and other AWS resources to form complex and robust workflows, coupled with event-driven development using Amazon EventBridge.
 
