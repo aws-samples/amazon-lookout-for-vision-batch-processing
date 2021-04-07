@@ -22,52 +22,29 @@ import boto3
 
 def lambda_handler(event, context):
 
-    lambda_client = boto3.client("lambda")
-    try:
-        uuid_response = lambda_client.list_event_source_mappings(
-            FunctionName=os.environ["analyze_lambda_arn"]
-        )
-    except Exception as e:
-        print(e)
-
-    mylist = uuid_response["EventSourceMappings"]
-    uuiddata = mylist[0]["UUID"]
-    analyse_lambda_uuid = uuiddata
-
-    try:
-        response = lambda_client.get_event_source_mapping(UUID=analyse_lambda_uuid)
-    except Exception as e:
-        print(e)
-
-    # State (string) -- The state of the event source mapping. It can be one of the following: Creating , Enabling , Enabled , Disabling , Disabled , Updating , or Deleting .
+    # State (string) -- The state of the event source mapping.
+    # It can be one of: Creating, Enabling, Enabled, Disabling, Disabled, Updating or Deleting.
     disabled_states = ["Disabled", "Disabling"]
     enabled_states = ["Enabling", "Enabled"]
 
-    # Disable
-    if event[0]["Action"] == "disable":
-        if response["State"] in disabled_states:
-            # Do Nothing
-            return "Already disabled"
-        else:
-            try:
-                response = lambda_client.update_event_source_mapping(
-                    UUID=analyse_lambda_uuid, Enabled=False
-                )
-            except Exception as e:
-                print(e)
-    else:
-        # Enable
-        if event[0]["Action"] == "enable":
-            if response["State"] in enabled_states:
-                # Do Nothing
-                return "Already_Running"
-            else:
-                try:
-                    response = lambda_client.update_event_source_mapping(
-                        UUID=analyse_lambda_uuid, Enabled=True
-                    )
-                except Exception as e:
-                    print(e)
+    analyse_lambda_uuid = os.environ["analyze_lambda_uuid"]
+    action = event[0]["Action"]
+    lambda_client = boto3.client("lambda")
 
-    print("Current state is:", response["State"])
-    return response["State"]
+    try:
+        response = lambda_client.get_event_source_mapping(UUID=analyse_lambda_uuid)
+        current_state = response["State"]
+        needs_disabling = action == "disable" and current_state not in disabled_states
+        needs_enabling = action == "enable" and current_state not in enabled_states
+
+        if needs_disabling or needs_enabling:
+            response = lambda_client.update_event_source_mapping(
+                UUID=analyse_lambda_uuid, Enabled=needs_enabling
+            )
+            current_state = response["State"]
+
+        print("Current state is: ", current_state)
+        return current_state
+
+    except Exception as e:
+        print(e)
