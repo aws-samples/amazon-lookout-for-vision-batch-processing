@@ -6,9 +6,9 @@ Parameters:
     Type: String
     Description: Amazon Lookout for Vision Project
   lookoutforvisionProjectModelVersion:
-    Type: String
-    AllowedPattern: ^[1-9][0-9]*|latest
+    Type: Number
     Description: Amazon Lookout for Vision Project Model version
+    Default: 1
   minimumInferenceUnitsToUse:
     Type: Number
     Description: Minimum number of inference units to use (Max 5)
